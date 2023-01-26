@@ -4,8 +4,7 @@ let score = 0;
 let hscore = 0;
 let counter = 0;
 
-document.querySelector('.btn').addEventListener('click', function(){
-    
+game = function(){
     const guess = Number(document.querySelector('.number').value);
 
     if(!guess){
@@ -70,9 +69,6 @@ document.querySelector('.btn').addEventListener('click', function(){
                 document.querySelector('.hscore').textContent = hscore;
             }
         }
-
-        
-        
     }
 
     else if(guess>secretNumber){
@@ -94,7 +90,15 @@ document.querySelector('.btn').addEventListener('click', function(){
         }
         counter++;
     }
-})
+};
+
+document.addEventListener('keydown', function(e){
+    if(e.key == 'Enter'){
+        game();
+    }
+});
+
+document.querySelector('.btn').addEventListener('click', game);
 
 
 document.querySelector('.btn2').addEventListener('click', function(){
@@ -108,4 +112,3 @@ document.querySelector('.btn2').addEventListener('click', function(){
     document.querySelector('.btn').style.display = 'inline-block';
 
 })
-
